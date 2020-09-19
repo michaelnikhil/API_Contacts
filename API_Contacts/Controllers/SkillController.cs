@@ -11,37 +11,37 @@ namespace API_Contacts.Controllers
     [AllowAnonymous]
     [Route("[controller]")]
     [ApiController]
-    public class ContactController : ControllerBase
+    public class SkillController : ControllerBase
     {
-        private readonly IRepository<Contact> _skillRepository;
+        private readonly IRepository<Skill> _skillRepository;
 
-        public ContactController(IRepository<Contact> contactRepository)
+        public SkillController(IRepository<Skill> skillRepository)
         {
-            _skillRepository = contactRepository;
+            _skillRepository = skillRepository;
         }
 
         [HttpGet]
-        public IEnumerable<Contact> Get()
+        public IEnumerable<Skill> Get()
         {
             return _skillRepository.GetAll();
         }
 
-        //GET Contact/5
-        [HttpGet("{id}", Name = "GetContact")]
+        //GET Skill/5
+        [HttpGet("{id}", Name = "GetSkill")]
         public IActionResult Get(int id)
         {
-            var contact = _skillRepository.GetById(id);
-            if (contact == null)
+            var skill = _skillRepository.GetById(id);
+            if (skill == null)
             {
                 return NotFound();
             }
 
-            return Ok(contact);
+            return Ok(skill);
         }
 
         //post Contact
         [HttpPost]
-        public IActionResult Post([FromBody] Contact value)
+        public IActionResult Post([FromBody] Skill value)
         {
             if (value == null)
             {
@@ -53,9 +53,9 @@ namespace API_Contacts.Controllers
 
         }
         //TODO fix the put method
-        //put Contact/5
+        //put Skill/5
         [HttpPost("{id}")]
-        public IActionResult Put(int id, [FromBody] Contact value)
+        public IActionResult Put(int id, [FromBody] Skill value)
         {
             if (value == null)
             {
@@ -74,17 +74,17 @@ namespace API_Contacts.Controllers
             return NoContent();
         }
 
-        //delete Contact/5
+        //delete Skill/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var contact = _skillRepository.GetById(id);
-            if (contact == null)
+            var skill = _skillRepository.GetById(id);
+            if (skill == null)
             {
                 return NotFound();
             }
 
-            _skillRepository.Delete(contact);
+            _skillRepository.Delete(skill);
 
             return NoContent();
         }

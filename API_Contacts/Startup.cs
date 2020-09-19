@@ -30,6 +30,7 @@ namespace API_Contacts
             services.AddDbContext<DBContactsContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IRepository<Contact>, InMemoryRepository<Contact>>();
+            services.AddTransient<IRepository<Skill>, InMemoryRepository<Skill>>();
             services.AddControllers();
         }
 
