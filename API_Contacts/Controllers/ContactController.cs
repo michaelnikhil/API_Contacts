@@ -32,28 +32,28 @@ namespace API_Contacts.Controllers
         [HttpGet]
         public IActionResult Get()
         {
- 
             var list_contacts = new List<ContactViewModel> { };
 
             foreach (Contact c in _contactRepository.GetAll())
             {
-                c.ContactSkill = _contactskillRepository.GetAll().Where(d => d.IdContact == c.Id).ToList();
-                //var list_skills = new List<int> { };
 
-
-                var query = (from skills in _skillRepository.GetAll()
+                var querySkills = (from skills in _skillRepository.GetAll()
                             join contactskills in _contactskillRepository.GetAll()
                             on  skills.Id equals contactskills.IdSkill
                             where contactskills.IdContact == c.Id
-                            select skills.SkillName).ToList();
+                            select skills.SkillName).ToList();              
 
+                list_contacts.Add(new ContactViewModel { 
+                    Id = c.Id,
+                    FirstName = c.FirstName, 
+                    LastName = c.LastName, 
+                    Email = c.Email,
+                    Address = c.Address,
+                    PhoneNumber = c.PhoneNumber,               
+                    Skills= querySkills
+                });
 
-               
-
-                list_contacts.Add(new ContactViewModel { FirstName = c.FirstName, LastName = c.LastName, Skills= (List<string>)query });
-
-            }
-            
+            }           
             return Ok(list_contacts);
         }
 
@@ -61,13 +61,30 @@ namespace API_Contacts.Controllers
         [HttpGet("{id}", Name = "GetContact")]
         public IActionResult Get(int id)
         {
-            var contact = _contactRepository.GetById(id);
-            if (contact == null)
+            var contactRepo = _contactRepository.GetById(id);
+            if (contactRepo == null)
             {
                 return NotFound();
             }
 
-            return Ok(contact);
+            var querySkills = (from skills in _skillRepository.GetAll()
+                         join contactskills in _contactskillRepository.GetAll()
+                         on skills.Id equals contactskills.IdSkill
+                         where contactskills.IdContact == contactRepo.Id
+                         select skills.SkillName).ToList();
+
+            var contactDisplay = new ContactViewModel
+            {
+                Id = contactRepo.Id,
+                FirstName = contactRepo.FirstName,
+                LastName = contactRepo.LastName,
+                Email = contactRepo.Email,
+                Address = contactRepo.Address,
+                PhoneNumber = contactRepo.PhoneNumber,
+                Skills = querySkills
+            };
+                        
+            return Ok(contactDisplay);
         }
 
         //post Contact
@@ -83,21 +100,14 @@ namespace API_Contacts.Controllers
             return CreatedAtAction("Get", new { id = createdContact.Id, createdContact });
 
         }
-        //TODO fix the put method
+
         //put Contact/5
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Contact value)
         {
             if (value == null)
             {
                 return BadRequest();
-            }
-
-            var note = _contactRepository.GetById(id);
-
-            if (note == null)
-            {
-                return NotFound();
             }
 
             value.Id = id;

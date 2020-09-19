@@ -45,8 +45,8 @@ namespace API_Contacts.DataAccess
         }
 
         public void Update(T item)
-        {
-            _context.Attach(item);
+        {       
+            _context.Set<T>().Attach(item);
             _context.Entry(item).State = EntityState.Modified;
             _context.SaveChanges();
         }
