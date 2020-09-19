@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace API_Contacts
+{
+    public partial class ContactSkill
+    {
+        public int IdContact { get; set; }
+        public int IdSkill { get; set; }
+
+        public virtual Contact IdContactNavigation { get; set; }
+        public virtual Skill IdSkillNavigation { get; set; }
+    }
+}
