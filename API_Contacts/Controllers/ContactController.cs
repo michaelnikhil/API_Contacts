@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API_Contacts.DataAccess;
+using API_Contacts.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,24 +14,54 @@ namespace API_Contacts.Controllers
     [ApiController]
     public class ContactController : ControllerBase
     {
-        private readonly IRepository<Contact> _skillRepository;
+        private readonly IRepository<Contact> _contactRepository;
+        private readonly IRepository<ContactSkill> _contactskillRepository;
+        private readonly IRepository<Skill> _skillRepository;
 
-        public ContactController(IRepository<Contact> contactRepository)
+        public ContactController(
+            IRepository<Contact> contactRepository, 
+            IRepository<ContactSkill> contactskillRepository,
+            IRepository<Skill> skillRepository
+            )
         {
-            _skillRepository = contactRepository;
+            _contactRepository = contactRepository;
+            _contactskillRepository = contactskillRepository;
+            _skillRepository = skillRepository;
         }
 
         [HttpGet]
-        public IEnumerable<Contact> Get()
+        public IActionResult Get()
         {
-            return _skillRepository.GetAll();
+ 
+            var list_contacts = new List<ContactViewModel> { };
+
+            foreach (Contact c in _contactRepository.GetAll())
+            {
+                c.ContactSkill = _contactskillRepository.GetAll().Where(d => d.IdContact == c.Id).ToList();
+                //var list_skills = new List<int> { };
+
+
+                var query = (from skills in _skillRepository.GetAll()
+                            join contactskills in _contactskillRepository.GetAll()
+                            on  skills.Id equals contactskills.IdSkill
+                            where contactskills.IdContact == c.Id
+                            select skills.SkillName).ToList();
+
+
+               
+
+                list_contacts.Add(new ContactViewModel { FirstName = c.FirstName, LastName = c.LastName, Skills= (List<string>)query });
+
+            }
+            
+            return Ok(list_contacts);
         }
 
         //GET Contact/5
         [HttpGet("{id}", Name = "GetContact")]
         public IActionResult Get(int id)
         {
-            var contact = _skillRepository.GetById(id);
+            var contact = _contactRepository.GetById(id);
             if (contact == null)
             {
                 return NotFound();
@@ -47,7 +78,7 @@ namespace API_Contacts.Controllers
             {
                 return BadRequest();
             }
-            var createdContact = _skillRepository.Add(value);
+            var createdContact = _contactRepository.Add(value);
 
             return CreatedAtAction("Get", new { id = createdContact.Id, createdContact });
 
@@ -62,7 +93,7 @@ namespace API_Contacts.Controllers
                 return BadRequest();
             }
 
-            var note = _skillRepository.GetById(id);
+            var note = _contactRepository.GetById(id);
 
             if (note == null)
             {
@@ -70,7 +101,7 @@ namespace API_Contacts.Controllers
             }
 
             value.Id = id;
-            _skillRepository.Update(value);
+            _contactRepository.Update(value);
             return NoContent();
         }
 
@@ -78,13 +109,13 @@ namespace API_Contacts.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var contact = _skillRepository.GetById(id);
+            var contact = _contactRepository.GetById(id);
             if (contact == null)
             {
                 return NotFound();
             }
 
-            _skillRepository.Delete(contact);
+            _contactRepository.Delete(contact);
 
             return NoContent();
         }
