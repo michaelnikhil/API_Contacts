@@ -27,8 +27,10 @@ namespace API_Contacts
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DBContactsContext>(options => 
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DBContactsContext>(options =>
+            options
+            .UseLazyLoadingProxies()
+            .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IRepository<Contact>, InMemoryRepository<Contact>>();
             services.AddTransient<IRepository<Skill>, InMemoryRepository<Skill>>();
             services.AddTransient<IRepository<ContactSkill>, InMemoryRepository<ContactSkill>>();
