@@ -47,9 +47,9 @@ namespace API_Contacts.Controllers
             {
                 return BadRequest();
             }
-            var createdContact = _skillRepository.Add(value);
+            var createdSkill = _skillRepository.Add(value);
 
-            return CreatedAtAction("Get", new { id = createdContact.Id, createdContact });
+            return CreatedAtAction("Get", new { id = createdSkill.Id, createdSkill });
 
         }
         //TODO fix the put method
