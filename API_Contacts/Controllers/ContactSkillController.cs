@@ -59,6 +59,48 @@ namespace API_Contacts.Controllers
             return CreatedAtAction("Get", new { id = createdContactSkill.IdContact, createdContactSkill });
 
         }
+        //GET SkillContact/5
+        [HttpGet("{idcontact}/{idskill}", Name = "GetSkillContact")]
+        public IActionResult Get(int idcontact, int idskill)
+        {
+            var contactskillQuery = _contactskillRepository.GetAll()
+            .Where(c => (c.IdContact == idcontact) && (c.IdSkill == idskill))
+            .FirstOrDefault();
+
+            if (contactskillQuery == null)
+            {
+                return BadRequest();
+            }
+
+            ContactSkillViewModel contactskill = new ContactSkillViewModel
+            {
+                IdContact = contactskillQuery.IdContact,
+                IdSkill = contactskillQuery.IdSkill,
+                FullName = String.Concat(contactskillQuery.IdContactNavigation.FirstName, " ", contactskillQuery.IdContactNavigation.LastName),
+                SkillNameLevel = String.Concat(contactskillQuery.IdSkillNavigation.SkillName, " ", contactskillQuery.IdSkillNavigation.SkillLevel)
+            };
+
+            return Ok(contactskill);
+        }
+
+
+        //delete ContactSkill/5
+        [HttpDelete("{idcontact}/{idskill}")]
+        public IActionResult Delete(int idcontact, int idskill)
+        {
+            var contactskill = _contactskillRepository.GetAll()
+                .Where(c => (c.IdContact == idcontact) && (c.IdSkill == idskill))
+                .FirstOrDefault();
+            if (contactskill == null)
+            {
+                return NotFound();
+            }
+
+            _contactskillRepository.Delete(contactskill);
+
+            return NoContent();
+        }
+
 
     }
 }

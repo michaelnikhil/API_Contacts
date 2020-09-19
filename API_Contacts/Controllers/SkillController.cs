@@ -97,7 +97,7 @@ namespace API_Contacts.Controllers
             return CreatedAtAction("Get", new { id = createdSkill.Id, createdSkill });
 
         }
-        //TODO fix the put method
+
         //put Skill/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Skill value)
