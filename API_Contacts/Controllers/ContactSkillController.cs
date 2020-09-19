@@ -34,11 +34,29 @@ namespace API_Contacts.Controllers
         {
 
             var contactskills = _contactskillRepository.GetAll().Select(c => new ContactSkillViewModel { 
+                IdContact = c.IdContactNavigation.Id,
+                IdSkill = c.IdSkillNavigation.Id,
                 FullName = String.Concat(c.IdContactNavigation.FirstName, " ", c.IdContactNavigation.LastName),
                 SkillNameLevel = String.Concat(c.IdSkillNavigation.SkillName, " ", c.IdSkillNavigation.SkillLevel)
             }).ToList();
 
             return Ok(contactskills);
+
+        }
+
+
+        //post Contact
+        [HttpPost]
+        public IActionResult Post([FromBody] ContactSkill value)
+        {
+            if (value == null)
+            {
+                return BadRequest();
+            }
+
+            var createdContactSkill = _contactskillRepository.Add(value);
+
+            return CreatedAtAction("Get", new { id = createdContactSkill.IdContact, createdContactSkill });
 
         }
 
