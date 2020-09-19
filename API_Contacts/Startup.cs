@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API_Contacts.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,7 @@ namespace API_Contacts
         {
             services.AddDbContext<DBContactsContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IRepository<Contact>, InMemoryRepository<Contact>>();
             services.AddControllers();
         }
 
