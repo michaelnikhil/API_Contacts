@@ -29,8 +29,9 @@ namespace API_Contacts
         {
             services.AddDbContext<DBContactsContext>(options =>
             options
-            .UseLazyLoadingProxies()
-            .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            .UseSqlite("Filename = DBContactsSQLite.db")
+            .UseLazyLoadingProxies());
+            //.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IRepository<Contact>, InMemoryRepository<Contact>>();
             services.AddTransient<IRepository<Skill>, InMemoryRepository<Skill>>();
             services.AddTransient<IRepository<ContactSkill>, InMemoryRepository<ContactSkill>>();
@@ -38,12 +39,14 @@ namespace API_Contacts
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DBContactsContext dBContactsContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            dBContactsContext.Database.Migrate();
 
             app.UseHttpsRedirection();
 
@@ -55,6 +58,7 @@ namespace API_Contacts
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

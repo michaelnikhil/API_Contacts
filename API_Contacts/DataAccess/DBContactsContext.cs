@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -23,11 +24,15 @@ namespace API_Contacts
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder
-                    .UseSqlServer("Data Source=DESKTOP-RMPC51H\\SQLEXPRESS;Initial Catalog=DBContacts;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                //optionsBuilder.UseSqlite("Filename = DBContactsSQLite.db", options =>
+                //{
+                //    options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+                //}           
+                //)  ;
+                //optionsBuilder.UseLazyLoadingProxies();
             }
         }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -71,6 +76,16 @@ namespace API_Contacts
             });
 
             OnModelCreatingPartial(modelBuilder);
+
+            modelBuilder.Entity<Skill>().HasData(
+                new Skill
+                {
+                    Id = 1,
+                    SkillName = "Courage",
+                    SkillLevel = "Bof",
+                }
+
+                );
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
