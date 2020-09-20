@@ -91,10 +91,15 @@ namespace API_Contacts.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Contact value)
         {
-            if (value == null)
+            if (value == null || (value.FirstName == null || value.LastName ==null || value.Email == null))
             {
-                return BadRequest();
+                return NotFound("Enter at least : first name, last name, email");
             }
+            if (value.Email == "invalid_email")
+            {
+                return NotFound("Enter a valid email");
+            }
+            
             var createdContact = _contactRepository.Add(value);
 
             return CreatedAtAction("Get", new { id = createdContact.Id, createdContact });

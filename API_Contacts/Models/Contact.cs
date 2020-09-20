@@ -30,7 +30,7 @@ namespace API_Contacts
                 else
                 {
                     //TODO improve exception handling
-                    throw new Exception("invalid email");
+                    _Email = "invalid_email";
                 }
             }
         }
