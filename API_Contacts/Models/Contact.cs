@@ -12,7 +12,7 @@ namespace API_Contacts
         }
 
         private string _Email; //for validation of the email
-
+        
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

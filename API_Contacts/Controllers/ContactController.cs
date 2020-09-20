@@ -29,6 +29,10 @@ namespace API_Contacts.Controllers
             _skillRepository = skillRepository;
         }
 
+        /// <summary>
+        /// Gets the list of contacts
+        /// </summary>
+        /// <returns>The list of contacts</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -57,6 +61,10 @@ namespace API_Contacts.Controllers
             return Ok(list_contacts);
         }
 
+        /// <summary>
+        /// Gets contact by id
+        /// </summary>
+        /// <returns>The contact by id/returns>
         //GET Contact/5
         [HttpGet("{id}", Name = "GetContact")]
         public IActionResult Get(int id)
@@ -87,6 +95,18 @@ namespace API_Contacts.Controllers
             return Ok(contactDisplay);
         }
 
+        /// <summary>
+        /// Creates a contact
+        /// </summary>
+        /// <remarks>
+        ///     {
+        ///         "FirstName" : "Archibald",
+        ///         "LastName" : "Haddock",
+        ///         "Email" : "haddock@tintin.com",
+        ///         "Address" : "Moulinsart, Belgique",
+        ///         "PhoneNumber" : "012345"
+        ///     }
+        /// </remarks>   
         //post Contact
         [HttpPost]
         public IActionResult Post([FromBody] Contact value)

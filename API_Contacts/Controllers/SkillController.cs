@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API_Contacts.DataAccess;
+using API_Contacts.Models;
 using API_Contacts.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace API_Contacts.Controllers
 {
@@ -84,8 +86,12 @@ namespace API_Contacts.Controllers
 
         }
 
+        /// <summary>
+        /// Creates a contact
+        /// </summary>
         //post Contact
         [HttpPost]
+        //[SwaggerRequestExample(typeof(SkillReducedModel),typeof(SkillRequestModelExample))]
         public IActionResult Post([FromBody] Skill value)
         {
             if (value == null)

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API_Contacts</name>
+    </assembly>
+    <members>
+        <member name="M:API_Contacts.Controllers.ContactController.Get">
+            <summary>
+            Gets the list of contacts
+            </summary>
+            <returns>The list of contacts</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:API_Contacts.Controllers.ContactController.Get(System.Int32)" -->
+        <member name="M:API_Contacts.Controllers.ContactController.Post(API_Contacts.Contact)">
+            <summary>
+            Creates a contact
+            </summary>
+            <remarks>
+                {
+                    "FirstName" : "Archibald",
+                    "LastName" : "Haddock",
+                    "Email" : "haddock@tintin.com",
+                    "Address" : "Moulinsart, Belgique",
+                    "PhoneNumber" : "012345"
+                }
+            </remarks>   
+        </member>
+        <member name="M:API_Contacts.Controllers.SkillController.Post(API_Contacts.Skill)">
+            <summary>
+            Creates a contact
+            </summary>
+        </member>
+    </members>
+</doc>
