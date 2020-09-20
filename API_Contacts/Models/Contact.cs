@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace API_Contacts
+namespace API_Contacts.Models
 {
     public partial class Contact
     {

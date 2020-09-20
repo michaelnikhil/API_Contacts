@@ -11,7 +11,7 @@
             <returns>The list of contacts</returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:API_Contacts.Controllers.ContactController.Get(System.Int32)" -->
-        <member name="M:API_Contacts.Controllers.ContactController.Post(API_Contacts.Contact)">
+        <member name="M:API_Contacts.Controllers.ContactController.Post(API_Contacts.Models.Contact)">
             <summary>
             Creates a contact
             </summary>
@@ -25,7 +25,7 @@
                 }
             </remarks>   
         </member>
-        <member name="M:API_Contacts.Controllers.SkillController.Post(API_Contacts.Skill)">
+        <member name="M:API_Contacts.Controllers.SkillController.Post(API_Contacts.Models.Skill)">
             <summary>
             Creates a contact
             </summary>

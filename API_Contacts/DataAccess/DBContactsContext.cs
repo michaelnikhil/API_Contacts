@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using API_Contacts.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 

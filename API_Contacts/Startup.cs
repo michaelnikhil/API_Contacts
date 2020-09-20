@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 using System.Reflection;
 using System.IO;
 using Microsoft.OpenApi.Models;
-
+using API_Contacts.Models;
 
 namespace API_Contacts
 {

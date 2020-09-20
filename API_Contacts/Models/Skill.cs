@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace API_Contacts
+namespace API_Contacts.Models
 {
     public partial class Skill
     {
