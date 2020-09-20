@@ -31,6 +31,9 @@ namespace API_Contacts.Controllers
             _skillRepository = skillRepository;
         }
 
+        /// <summary>
+        /// Gets the list of skills (name and level)
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -56,7 +59,9 @@ namespace API_Contacts.Controllers
             }
             return Ok(list_skills);
         }
-
+        /// <summary>
+        /// Gets skill by id
+        /// </summary>
         //GET Skill/5
         [HttpGet("{id}", Name = "GetSkill")]
         public IActionResult Get(int id)
@@ -86,9 +91,19 @@ namespace API_Contacts.Controllers
 
         }
 
+
         /// <summary>
-        /// Creates a contact
+        /// Creates a skill
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        /// 
+        ///     {
+        ///         "SkillName" : "Humour",
+        ///         "SkillLevel" : "Dementiel"
+        ///     }
+        /// </remarks>  
         //post Contact
         [HttpPost]
         //[SwaggerRequestExample(typeof(SkillReducedModel),typeof(SkillRequestModelExample))]
@@ -104,6 +119,18 @@ namespace API_Contacts.Controllers
 
         }
 
+        /// <summary>
+        /// Updates a skill
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        /// 
+        ///     {
+        ///         "SkillName" : "Humour",
+        ///         "SkillLevel" : "Dementiel"
+        ///     }
+        /// </remarks>
         //put Skill/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Skill value)
@@ -118,6 +145,9 @@ namespace API_Contacts.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletes a skill
+        /// </summary>
         //delete Skill/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

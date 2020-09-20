@@ -16,6 +16,9 @@
             Creates a contact
             </summary>
             <remarks>
+            Sample request:
+            
+            
                 {
                     "FirstName" : "Archibald",
                     "LastName" : "Haddock",
@@ -25,9 +28,98 @@
                 }
             </remarks>   
         </member>
+        <member name="M:API_Contacts.Controllers.ContactController.Put(System.Int32,API_Contacts.Models.Contact)">
+            <summary>
+            Updates a contact
+            </summary>
+            <remarks>
+            Sample request:
+            
+            
+                {
+                    "FirstName" : "Archibald",
+                    "LastName" : "Haddock",
+                    "Email" : "haddock@tintin.com",
+                    "Address" : "Moulinsart, Belgique",
+                    "PhoneNumber" : "012345"
+                }
+            </remarks> 
+        </member>
+        <member name="M:API_Contacts.Controllers.ContactController.Delete(System.Int32)">
+            <summary>
+            Deletes a contact
+            </summary>
+        </member>
+        <member name="M:API_Contacts.Controllers.ContactSkillController.Get">
+            <summary>
+            Gets the list of contact - skill associations
+            </summary>
+        </member>
+        <member name="M:API_Contacts.Controllers.ContactSkillController.Get(System.Int32,System.Int32)">
+            <summary>
+            Gets a contact - skill association by id
+            </summary>
+        </member>
+        <member name="M:API_Contacts.Controllers.ContactSkillController.Post(API_Contacts.Models.ContactSkill)">
+            <summary>
+            Create contact - skill association
+            </summary>
+            <remarks>
+            Sample request:
+            
+            
+                {
+                    "IdContact" : 1,
+                    "IdSkill" : 5
+                }
+            </remarks>
+        </member>
+        <member name="M:API_Contacts.Controllers.ContactSkillController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Delete a contact - skill association
+            </summary>
+        </member>
+        <member name="M:API_Contacts.Controllers.SkillController.Get">
+            <summary>
+            Gets the list of skills (name and level)
+            </summary>
+        </member>
+        <member name="M:API_Contacts.Controllers.SkillController.Get(System.Int32)">
+            <summary>
+            Gets skill by id
+            </summary>
+        </member>
         <member name="M:API_Contacts.Controllers.SkillController.Post(API_Contacts.Models.Skill)">
             <summary>
-            Creates a contact
+            Creates a skill
+            </summary>
+            <remarks>
+            Sample request:
+            
+            
+                {
+                    "SkillName" : "Humour",
+                    "SkillLevel" : "Dementiel"
+                }
+            </remarks>  
+        </member>
+        <member name="M:API_Contacts.Controllers.SkillController.Put(System.Int32,API_Contacts.Models.Skill)">
+            <summary>
+            Updates a skill
+            </summary>
+            <remarks>
+            Sample request:
+            
+            
+                {
+                    "SkillName" : "Humour",
+                    "SkillLevel" : "Dementiel"
+                }
+            </remarks>
+        </member>
+        <member name="M:API_Contacts.Controllers.SkillController.Delete(System.Int32)">
+            <summary>
+            Deletes a skill
             </summary>
         </member>
     </members>

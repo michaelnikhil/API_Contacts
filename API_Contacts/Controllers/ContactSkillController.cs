@@ -30,6 +30,9 @@ namespace API_Contacts.Controllers
             _skillRepository = skillRepository;
         }
 
+        /// <summary>
+        /// Gets the list of contact - skill associations
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -44,22 +47,9 @@ namespace API_Contacts.Controllers
             return Ok(contactskills);
 
         }
-
-
-        //post Contact
-        [HttpPost]
-        public IActionResult Post([FromBody] ContactSkill value)
-        {
-            if (value == null)
-            {
-                return BadRequest();
-            }
-
-            var createdContactSkill = _contactskillRepository.Add(value);
-
-            return CreatedAtAction("Get", new { id = createdContactSkill.IdContact, createdContactSkill });
-
-        }
+        /// <summary>
+        /// Gets a contact - skill association by id
+        /// </summary>
         //GET SkillContact/5
         [HttpGet("{idcontact}/{idskill}", Name = "GetSkillContact")]
         public IActionResult Get(int idcontact, int idskill)
@@ -85,6 +75,37 @@ namespace API_Contacts.Controllers
         }
 
 
+        /// <summary>
+        /// Create contact - skill association
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        /// 
+        ///     {
+        ///         "IdContact" : 1,
+        ///         "IdSkill" : 5
+        ///     }
+        /// </remarks>
+        //post Contact
+        [HttpPost]
+        public IActionResult Post([FromBody] ContactSkill value)
+        {
+            if (value == null)
+            {
+                return BadRequest();
+            }
+
+            var createdContactSkill = _contactskillRepository.Add(value);
+
+            return CreatedAtAction("Get", new { id = createdContactSkill.IdContact, createdContactSkill });
+
+        }
+
+
+        /// <summary>
+        /// Delete a contact - skill association
+        /// </summary>
         //delete ContactSkill/5
         [HttpDelete("{idcontact}/{idskill}")]
         public IActionResult Delete(int idcontact, int idskill)

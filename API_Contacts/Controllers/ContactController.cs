@@ -100,6 +100,9 @@ namespace API_Contacts.Controllers
         /// Creates a contact
         /// </summary>
         /// <remarks>
+        /// Sample request:
+        /// 
+        /// 
         ///     {
         ///         "FirstName" : "Archibald",
         ///         "LastName" : "Haddock",
@@ -127,6 +130,21 @@ namespace API_Contacts.Controllers
 
         }
 
+        /// <summary>
+        /// Updates a contact
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        /// 
+        ///     {
+        ///         "FirstName" : "Archibald",
+        ///         "LastName" : "Haddock",
+        ///         "Email" : "haddock@tintin.com",
+        ///         "Address" : "Moulinsart, Belgique",
+        ///         "PhoneNumber" : "012345"
+        ///     }
+        /// </remarks> 
         //put Contact/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Contact value)
@@ -140,7 +158,9 @@ namespace API_Contacts.Controllers
             _contactRepository.Update(value);
             return NoContent();
         }
-
+        /// <summary>
+        /// Deletes a contact
+        /// </summary>
         //delete Contact/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -150,9 +170,7 @@ namespace API_Contacts.Controllers
             {
                 return NotFound();
             }
-
             _contactRepository.Delete(contact);
-
             return NoContent();
         }
     }
