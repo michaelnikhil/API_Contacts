@@ -39,6 +39,7 @@ namespace API_Contacts.Controllers
         {
             var list_skills = new List<SkillViewModel> { };
 
+            //query the contacts for each skill to display in the view
             foreach (Skill s in _skillRepository.GetAll())
             {
 
@@ -73,6 +74,7 @@ namespace API_Contacts.Controllers
                 return NotFound();
             }
 
+            //query the contacts for this skill to display in the view
             var queryContacts = (from contacts in _contactRepository.GetAll()
                                  join contactskills in _contactskillRepository.GetAll()
                                  on contacts.Id equals contactskills.IdContact

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using API_Contacts.DataAccess;
 using API_Contacts.Models;
 using API_Contacts.ViewModels;
@@ -39,6 +38,7 @@ namespace API_Contacts.Controllers
         {
             var list_contacts = new List<ContactViewModel> { };
 
+            //query the skills for each contact to display in the view
             foreach (Contact c in _contactRepository.GetAll())
             {
 
@@ -73,8 +73,9 @@ namespace API_Contacts.Controllers
             if (contactRepo == null)
             {
                 return NotFound();
-            }
 
+            }
+            //query the skills for this contact to display in the view
             var querySkills = (from skills in _skillRepository.GetAll()
                          join contactskills in _contactskillRepository.GetAll()
                          on skills.Id equals contactskills.IdSkill

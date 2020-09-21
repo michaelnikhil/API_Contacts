@@ -37,6 +37,7 @@ namespace API_Contacts.Controllers
         public IActionResult Get()
         {
 
+            //add the full name and skill name/level to the contact skills Ids
             var contactskills = _contactskillRepository.GetAll().Select(c => new ContactSkillViewModel { 
                 IdContact = c.IdContactNavigation.Id,
                 IdSkill = c.IdSkillNavigation.Id,

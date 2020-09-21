@@ -35,7 +35,11 @@ namespace API_Contacts
             options
             .UseSqlite("Filename = DBContactsSQLite.db")
             .UseLazyLoadingProxies());
+
+            //SQL server data provider
             //.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
             services.AddTransient<IRepository<Contact>, InMemoryRepository<Contact>>();
             services.AddTransient<IRepository<Skill>, InMemoryRepository<Skill>>();
             services.AddTransient<IRepository<ContactSkill>, InMemoryRepository<ContactSkill>>();
@@ -52,7 +56,6 @@ namespace API_Contacts
                         Url =new Uri( "https://github.com/michaelnikhil/API_Contacts")
                     },
                     Version = "v1" });
-                //c.OperationFilter<ExamplesOperationFilter>();
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

@@ -14,6 +14,7 @@ namespace API_Contacts.Models
         public string SkillName { get; set; }
         public string SkillLevel { get; set; }
 
+        //relationship to skill table via an association table (many to many)
         public virtual ICollection<ContactSkill> ContactSkill { get; set; }
     }
 }
