@@ -16,6 +16,9 @@ using System.Reflection;
 using System.IO;
 using Microsoft.OpenApi.Models;
 using API_Contacts.Models;
+using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace API_Contacts
 {
@@ -63,6 +66,9 @@ namespace API_Contacts
                 c.IncludeXmlComments(xmlPath);
 
             });
+            services.AddAuthentication(IISDefaults.AuthenticationScheme);
+            
+
 
         }
 
