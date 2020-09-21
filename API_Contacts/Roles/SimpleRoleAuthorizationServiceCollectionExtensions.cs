@@ -18,12 +18,12 @@ namespace API_Contacts.Roles
         /// </summary>
         /// <typeparam name="TRoleProvider">The <see cref="Type"/> of the <see cref="ISimpleRoleProvider"/> implementation that will provide user roles.</typeparam>
         /// <param name="services">The <see cref="IServiceCollection"/> onto which to register the services.</param>
-        public static void AddSimpleRoleAuthorization<TRoleProvider>(this IServiceCollection services)
-            where TRoleProvider : class, ISimpleRoleProvider
-        {
-            services.AddSingleton<ISimpleRoleProvider, TRoleProvider>();
-            services.AddSingleton<IClaimsTransformation, SimpleRoleAuthorizationTransform>();
-        }
+        //public static void AddSimpleRoleAuthorization<TRoleProvider>(this IServiceCollection services)
+        //    where TRoleProvider : class, ISimpleRoleProvider
+        //{
+        //    services.AddSingleton<ISimpleRoleProvider, TRoleProvider>();
+        //    services.AddSingleton<IClaimsTransformation, SimpleRoleAuthorizationTransform>();
+        //}
 
 
 

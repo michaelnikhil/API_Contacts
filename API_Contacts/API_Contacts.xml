@@ -126,5 +126,35 @@
             Delete a skill
             </summary>
         </member>
+        <member name="M:API_Contacts.Roles.ISimpleRoleProvider.GetUserRolesAsync(System.String)">
+            <summary>
+            Loads and returns the roles names for a given user name
+             </summary>
+             <param name="userName"> the login name of the user for which to return the roles</param>
+            <returns>
+             collection of <see cref="T:System.String"/> that describes the roles assigned to the user;
+             An empty collection of no roles are assigned to the user
+            </returns>
+            
+        </member>
+        <member name="T:API_Contacts.Roles.SimpleRoleAuthorizationServiceCollectionExtensions">
+            <summary>
+            Provides the extension methods to enable and register the simple role authentication on an Asp.Net Core web site.
+            </summary>
+        </member>
+        <member name="T:API_Contacts.Roles.SimpleRoleAuthorizationTransform">
+            <summary>
+            Implements a <see cref="T:Microsoft.AspNetCore.Authentication.IClaimsTransformation" /> that uses a <see cref="T:API_Contacts.Roles.ISimpleRoleProvider" /> to fetch and apply
+            applicative roles
+            for a user.
+            <para>
+            To use, you need to implement a class that inherit from <see cref="T:API_Contacts.Roles.ISimpleRoleProvider" /> and use the
+            <see cref="!:SimpleRoleAuthorizationServiceCollectionExtensions.AddSimpleRoleAuthorization&lt;TRoleProvider&gt;" /> extension
+            method
+            in the <c>ConfigureServices</c> method of the <c>Startup</c> class to enable the simple role authorization and
+            associate your simple role provider implementation.
+            </para>
+            </summary>
+        </member>
     </members>
 </doc>
