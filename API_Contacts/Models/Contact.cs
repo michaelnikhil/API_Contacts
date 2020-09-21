@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Net.Http.Headers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,11 +13,14 @@ namespace API_Contacts.Models
         }
 
         private string _Email; //for validation of the email
-        
+        private string _PhoneNumber; //for validation of the phone number
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
+
+        //email validation setter
         public string Email
         {
             get { return _Email; }
@@ -29,13 +33,29 @@ namespace API_Contacts.Models
                 }
                 else
                 {
-                    //TODO improve exception handling
-                    _Email = "invalid_email";
+                    throw new ArgumentException("Enter a valid email");
                 }
             }
         }
-        public string PhoneNumber { get; set; }
+        //phone number validation setter
+        public string PhoneNumber {
+            get { return _PhoneNumber; }
+            set 
+            {
+                int number;
+                if (int.TryParse(value, out number))
+                {
+                    _PhoneNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Enter a valid phone number");
+                }
+            }
+                
+        }
 
+        //relationship to skill table via an association table (many to many)
         public virtual ICollection<ContactSkill> ContactSkill { get; set; }
     }
 }

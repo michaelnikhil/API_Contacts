@@ -116,13 +116,10 @@ namespace API_Contacts.Controllers
         {
             if (value == null || (value.FirstName == null || value.LastName ==null || value.Email == null))
             {
-                return NotFound("Enter at least : first name, last name, email");
+                throw new ArgumentNullException("Enter at least: first name, last name, email");
             }
-            if (value.Email == "invalid_email")
-            {
-                return NotFound("Enter a valid email");
-            }
-            
+
+
             var createdContact = _contactRepository.Add(value);
 
             return CreatedAtAction("Get", new { id = createdContact.Id, createdContact });
