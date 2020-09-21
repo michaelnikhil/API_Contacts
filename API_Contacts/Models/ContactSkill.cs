@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace API_Contacts.Models
 {
-    //this class makes the link between contact and skills (many to many relationship)
-    //composite primary key : IdSkill, IdContact
+
+    /// <summary>
+    ///   this class makes the link between contact and skills (many to many relationship)
+    ///   composite primary key : IdSkill, IdContact
+    /// </summary>
     public partial class ContactSkill
     {
         public int IdSkill { get; set; }

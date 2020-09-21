@@ -31,6 +31,10 @@ namespace API_Contacts
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            /// <summary>
+            ///   the data provider can be changed here
+            /// </summary>
             services.AddDbContext<DBContactsContext>(options =>
             options
             .UseSqlite("Filename = DBContactsSQLite.db")
@@ -45,6 +49,9 @@ namespace API_Contacts
             services.AddTransient<IRepository<ContactSkill>, InMemoryRepository<ContactSkill>>();
             services.AddControllers();
 
+            /// <summary>
+            ///   register the swagger generator, defining swagger document
+            /// </summary>
             //register the swagger generator, defining 1 or more swagger documents
             services.AddSwaggerGen(c=> {
                 c.SwaggerDoc("v1", new OpenApiInfo { 

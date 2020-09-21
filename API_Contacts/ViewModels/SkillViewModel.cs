@@ -4,7 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace API_Contacts.ViewModels
-{
+{    
+    /// <summary>
+     ///   this class is used to display the skills and their list of contacts (FullName)
+     /// </summary>
+  
     public class SkillViewModel
     {
         public int Id { get; set; }

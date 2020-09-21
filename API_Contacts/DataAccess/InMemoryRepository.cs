@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace API_Contacts.DataAccess
 {
+    /// <summary>
+    /// Implementation of the CRUD methods
+    /// </summary>
     public class InMemoryRepository<T> : IRepository<T> where T : class
     {
         private readonly DBContactsContext _context;

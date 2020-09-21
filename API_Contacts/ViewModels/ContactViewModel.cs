@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace API_Contacts.ViewModels
 {
+    /// <summary>
+    ///   this class is used to display the contacts and their list of skills
+    /// </summary>
+    /// <remarks> Only the skill names are displayed. To corresponding skill level can be displayed in the other tables </remarks>
     public class ContactViewModel
     {
         public int Id { get; set; }

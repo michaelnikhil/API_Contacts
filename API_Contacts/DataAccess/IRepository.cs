@@ -3,6 +3,9 @@
 
 namespace API_Contacts.DataAccess
 {
+    /// <summary>
+    /// Interface for the CRUD operations
+    /// </summary>
     public interface IRepository<T> where T : class
     {
         T Add(T item);

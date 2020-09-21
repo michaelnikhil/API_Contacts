@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace API_Contacts
 {
+    /// <summary>
+    /// This class is generated using the database first approach
+    /// </summary>
     public partial class DBContactsContext : DbContext
     {
         public DBContactsContext()
@@ -78,6 +81,10 @@ namespace API_Contacts
 
             OnModelCreatingPartial(modelBuilder);
 
+
+            /// <summary>
+            /// Seed test data after add-migration and update-databse
+            /// </summary>
             modelBuilder.Entity<Skill>().HasData(
                 new Skill
                 {

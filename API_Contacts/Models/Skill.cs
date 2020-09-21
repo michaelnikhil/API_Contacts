@@ -3,6 +3,12 @@ using System.Collections.Generic;
 
 namespace API_Contacts.Models
 {
+    /// <summary>
+    ///   this class describes the attribues of the skill
+    /// </summary>
+    /// <remarks> there is a link to contactskill table </remarks>
+    
+
     public partial class Skill
     {
         public Skill()

@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace API_Contacts.ViewModels
 {
+    /// <summary>
+    ///   this class is used to display the association between skills and contacts
+    /// </summary>
+    /// <remarks> The full name and skill name level are constructed at the level of the controller </remarks>
     public class ContactSkillViewModel
     {
         public int IdContact { get; set; }
