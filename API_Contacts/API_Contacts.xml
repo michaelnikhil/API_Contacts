@@ -6,14 +6,18 @@
     <members>
         <member name="M:API_Contacts.Controllers.ContactController.Get">
             <summary>
-            Gets the list of contacts
+            Get the list of contacts
             </summary>
             <returns>The list of contacts</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:API_Contacts.Controllers.ContactController.Get(System.Int32)" -->
+        <member name="M:API_Contacts.Controllers.ContactController.Get(System.Int32)">
+            <summary>
+            Get contact by id
+            </summary>
+        </member>
         <member name="M:API_Contacts.Controllers.ContactController.Post(API_Contacts.Models.Contact)">
             <summary>
-            Creates a contact
+            Create a contact
             </summary>
             <remarks>
             Sample request:
@@ -30,7 +34,7 @@
         </member>
         <member name="M:API_Contacts.Controllers.ContactController.Put(System.Int32,API_Contacts.Models.Contact)">
             <summary>
-            Updates a contact
+            Update a contact
             </summary>
             <remarks>
             Sample request:
@@ -47,17 +51,17 @@
         </member>
         <member name="M:API_Contacts.Controllers.ContactController.Delete(System.Int32)">
             <summary>
-            Deletes a contact
+            Delete a contact
             </summary>
         </member>
         <member name="M:API_Contacts.Controllers.ContactSkillController.Get">
             <summary>
-            Gets the list of contact - skill associations
+            Get the list of contact - skill associations
             </summary>
         </member>
         <member name="M:API_Contacts.Controllers.ContactSkillController.Get(System.Int32,System.Int32)">
             <summary>
-            Gets a contact - skill association by id
+            Get a contact - skill association by id
             </summary>
         </member>
         <member name="M:API_Contacts.Controllers.ContactSkillController.Post(API_Contacts.Models.ContactSkill)">
@@ -81,17 +85,17 @@
         </member>
         <member name="M:API_Contacts.Controllers.SkillController.Get">
             <summary>
-            Gets the list of skills (name and level)
+            Get the list of skills 
             </summary>
         </member>
         <member name="M:API_Contacts.Controllers.SkillController.Get(System.Int32)">
             <summary>
-            Gets skill by id
+            Get skill by id
             </summary>
         </member>
         <member name="M:API_Contacts.Controllers.SkillController.Post(API_Contacts.Models.Skill)">
             <summary>
-            Creates a skill
+            Create a skill
             </summary>
             <remarks>
             Sample request:
@@ -105,7 +109,7 @@
         </member>
         <member name="M:API_Contacts.Controllers.SkillController.Put(System.Int32,API_Contacts.Models.Skill)">
             <summary>
-            Updates a skill
+            Update a skill
             </summary>
             <remarks>
             Sample request:
@@ -119,7 +123,7 @@
         </member>
         <member name="M:API_Contacts.Controllers.SkillController.Delete(System.Int32)">
             <summary>
-            Deletes a skill
+            Delete a skill
             </summary>
         </member>
     </members>

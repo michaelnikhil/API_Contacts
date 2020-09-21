@@ -31,7 +31,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Gets the list of contact - skill associations
+        /// Get the list of contact - skill associations
         /// </summary>
         [HttpGet]
         public IActionResult Get()
@@ -48,7 +48,7 @@ namespace API_Contacts.Controllers
 
         }
         /// <summary>
-        /// Gets a contact - skill association by id
+        /// Get a contact - skill association by id
         /// </summary>
         //GET SkillContact/5
         [HttpGet("{idcontact}/{idskill}", Name = "GetSkillContact")]

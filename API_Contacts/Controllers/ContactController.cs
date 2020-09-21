@@ -31,7 +31,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Gets the list of contacts
+        /// Get the list of contacts
         /// </summary>
         /// <returns>The list of contacts</returns>
         [HttpGet]
@@ -63,9 +63,8 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Gets contact by id
+        /// Get contact by id
         /// </summary>
-        /// <returns>The contact by id/returns>
         //GET Contact/5
         [HttpGet("{id}", Name = "GetContact")]
         public IActionResult Get(int id)
@@ -97,7 +96,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Creates a contact
+        /// Create a contact
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -131,7 +130,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Updates a contact
+        /// Update a contact
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -159,7 +158,7 @@ namespace API_Contacts.Controllers
             return NoContent();
         }
         /// <summary>
-        /// Deletes a contact
+        /// Delete a contact
         /// </summary>
         //delete Contact/5
         [HttpDelete("{id}")]

@@ -45,7 +45,12 @@ namespace API_Contacts
             services.AddSwaggerGen(c=> {
                 c.SwaggerDoc("v1", new OpenApiInfo { 
                     Title = "My API", 
-                    Description = "An API to display contact details and associated skills",  
+                    Description = "An API to manage contact details and associated skills",  
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Github repo",
+                        Url =new Uri( "https://github.com/michaelnikhil/API_Contacts")
+                    },
                     Version = "v1" });
                 //c.OperationFilter<ExamplesOperationFilter>();
 

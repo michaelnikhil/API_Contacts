@@ -32,7 +32,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Gets the list of skills (name and level)
+        /// Get the list of skills 
         /// </summary>
         [HttpGet]
         public IActionResult Get()
@@ -60,7 +60,7 @@ namespace API_Contacts.Controllers
             return Ok(list_skills);
         }
         /// <summary>
-        /// Gets skill by id
+        /// Get skill by id
         /// </summary>
         //GET Skill/5
         [HttpGet("{id}", Name = "GetSkill")]
@@ -93,7 +93,7 @@ namespace API_Contacts.Controllers
 
 
         /// <summary>
-        /// Creates a skill
+        /// Create a skill
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -120,7 +120,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Updates a skill
+        /// Update a skill
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -146,7 +146,7 @@ namespace API_Contacts.Controllers
         }
 
         /// <summary>
-        /// Deletes a skill
+        /// Delete a skill
         /// </summary>
         //delete Skill/5
         [HttpDelete("{id}")]
